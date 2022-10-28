@@ -1,5 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import Image from 'next/image';
+import Movie from './Movie';
 
 export interface IMovie {
     adult: boolean;
@@ -17,7 +19,21 @@ export interface IMovie {
     video: boolean;
     vote_average: number;
     vote_count: number;
+    videos : IVideo[];
 }   
+
+export interface IVideo {
+  id: string;
+  iso_639_1: string; 
+  iso_3166_1: string;
+  key: string | undefined;
+  name: string;
+  official: boolean;
+  published_at: Date;
+  site: string;
+  size: number;
+  type: string;
+}
 
 
 const useMovies = () => {
@@ -50,7 +66,13 @@ const MovieList = () => {
   console.log(movies);
   
   return (
-    <div>MovieList</div>
+    <div className='felx flex-col justify-center items-center p-6'>
+      <ul className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 xl:grid-cols-5 gap-2'>
+        {movies.map((movie,index) =>(
+          <Movie key={index} movie={movie}/>
+        ))}
+      </ul>
+    </div>
   );
 };
 
