@@ -19,6 +19,7 @@ const MovieDetail: NextPage<TProps> = ({movie,results}) => {
   return (
     <Layout>
       <div className='max-w-sm w-full lg:max-w-full lg:flex-row p-20'>
+        <div className="font-bold text-xl text-center mb-2">{movie.title}</div>
         <div className='max-w-sm w-full lg:max-w-full lg:flex'>
       
           <iframe
@@ -32,9 +33,14 @@ const MovieDetail: NextPage<TProps> = ({movie,results}) => {
           <img className="w-full" src={`${URLIMAGE+ movie.backdrop_path}`} alt={`${movie.title} Poster`}/>
         </div>
         <div className="px-6 py-4">
-          <div className="font-bold text-xl mb-2">The Coldest Sunset</div>
-          <p className="text-gray-700 text-base">
-      Lorem ipsum dolor sit amet, consectetur adipisicing elit. Voluptatibus quia, nulla! Maiores et perferendis eaque, exercitationem praesentium nihil.
+          <p className="text-gray-700 text-base font-bold">
+          Overview : <span>{movie.overview}</span>
+          </p>
+          <p className="text-gray-700 text-base font-bold">
+          Tagline : <span>{movie.tagline}</span>
+          </p>
+          <p className="text-gray-700 text-base font-bold">
+          Original_language : <span>{movie.original_language}</span>
           </p>
         </div>
       </div>

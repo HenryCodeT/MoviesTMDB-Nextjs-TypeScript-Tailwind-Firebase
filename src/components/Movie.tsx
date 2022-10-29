@@ -12,7 +12,7 @@ const Movie: FC<TProps> = ({movie}) => {
       <Link href={`/movies/${movie.id}`}>
         <img className='cursor-pointer' src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={`${movie.title} Poster`}/>
       </Link>
-      <strong className='text-center'>{movie.title}</strong>
+      <div className='text-center'>{movie.title}</div>
     </li>
   );
 };

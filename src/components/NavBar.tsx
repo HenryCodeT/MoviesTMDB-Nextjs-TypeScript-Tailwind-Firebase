@@ -7,25 +7,25 @@ export const NavBar  = () => {
   const router = useRouter();
 
   return (
-    <div className="py-4 boder-b-2 border-gray-900">
-      <header className="container mx-auto flex flex-row items-center justify-between border-2 border-red-900">
+    <div className="py-4 boder-b-2">
+      <header className="container mx-auto flex flex-row items-center justify-between border-2">
         <h1 className="px-4">
           <Link href="/">
-            <a>NFT</a>
+            <a>MOVIES TMDB</a>
           </Link>
         </h1>
-        <ul className="flex flex-row items-center justify-between border-2 border-red-900">
+        <ul className="flex flex-row items-center justify-between border-2">
           <li className="px-4">
             <Link href="/">
               <a>Home</a>
             </Link>
           </li>
           <li className="px-4">
-            <Link href="/dashboard">
-              <a>Dashboard</a>
+            <Link href="/movies">
+              <a>Movies</a>
             </Link>
           </li>
-          <li className="px-4 border-l-2 border-gray-900">
+          <li className="px-4 border-l-2">
             {
               user?(
                 <button type="button" onClick={ async () => {

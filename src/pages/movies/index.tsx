@@ -10,7 +10,7 @@ interface Tprops {
 const Movies: NextPage<Tprops> = () => {
   return (
     <Layout>
-      <div>Movies</div>
+      <div className='text-center font-bold'>Movies</div>
       <MovieList/>
     </Layout>
   );

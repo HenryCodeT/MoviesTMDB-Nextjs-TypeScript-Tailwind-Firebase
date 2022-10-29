@@ -24,7 +24,7 @@ const Login: NextPage = () => {
                 e.preventDefault();
                 try {
                   await login(email, password);
-                  await router.push('/dashboard');
+                  await router.push('/movies');
                 } catch (error) {
                   console.log(error);
                 }
