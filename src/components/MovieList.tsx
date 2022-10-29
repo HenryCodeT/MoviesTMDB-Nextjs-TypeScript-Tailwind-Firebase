@@ -64,7 +64,6 @@ const useMovies = () => {
 
 const MovieList = () => {
   const movies = useMovies();
-  console.log(movies);
   
   return (
     <div className='felx flex-col justify-center items-center p-6'>

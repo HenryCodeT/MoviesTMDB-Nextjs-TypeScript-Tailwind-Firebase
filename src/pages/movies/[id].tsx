@@ -10,8 +10,6 @@ interface TProps {
 } 
 
 const MovieDetail: NextPage<TProps> = ({movie,results}) => {
-  console.log(movie);
-  console.log(results);
   
   const URLIMAGE = 'https://image.tmdb.org/t/p/w500';
 
@@ -19,7 +17,7 @@ const MovieDetail: NextPage<TProps> = ({movie,results}) => {
   return (
     <Layout>
       <div className='max-w-sm w-full lg:max-w-full lg:flex-row p-20'>
-        <div className="font-bold text-xl text-center mb-2">{movie.title}</div>
+        <div className="text-2xl sm:text-3xl text-gray-600 font-bold text-center">{movie.title}</div>
         <div className='max-w-sm w-full lg:max-w-full lg:flex'>
       
           <iframe
@@ -33,15 +31,31 @@ const MovieDetail: NextPage<TProps> = ({movie,results}) => {
           <img className="w-full" src={`${URLIMAGE+ movie.backdrop_path}`} alt={`${movie.title} Poster`}/>
         </div>
         <div className="px-6 py-4">
-          <p className="text-gray-700 text-base font-bold">
-          Overview : <span>{movie.overview}</span>
-          </p>
-          <p className="text-gray-700 text-base font-bold">
-          Tagline : <span>{movie.tagline}</span>
-          </p>
-          <p className="text-gray-700 text-base font-bold">
-          Original_language : <span>{movie.original_language}</span>
-          </p>
+          <div className='flex items-center m-2'>
+            <h6 className="text-2xl sm:text-3xl text-gray-600 font-bold">
+            Overview:
+            </h6>
+            <h6 className='text-2xl sm:text-3xl text-gray-600 ml-1'>
+              {movie.overview}
+            </h6>
+          </div>
+          <hr />
+          <div className='flex items-center justify-between m-2'>
+            <h6 className="text-2xl sm:text-3xl text-gray-600 font-bold">
+            Tagline:
+            </h6>
+            <h6 className='text-2xl sm:text-3xl text-gray-600 ml-1'>
+              {movie.tagline}
+            </h6>
+          </div>
+          <div className='flex items-center justify-between m-2'>
+            <h6 className="text-2xl sm:text-3xl text-gray-600 font-bold">
+            Original Language:
+            </h6>
+            <h6 className='text-2xl sm:text-3xl text-gray-600 ml-1'>
+              {movie.original_language}
+            </h6>
+          </div>
         </div>
       </div>
     </Layout>
@@ -54,7 +68,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     process.env.NEXT_PUBLIC_API_URL + '/movie/' + context.params?.id +'/videos'+'?api_key='+process.env.NEXT_PUBLIC_API_KEY
   );
   const {results} = await resVideos.json();
-  console.log(results);
     
   const resMovie = await fetch(
     process.env.NEXT_PUBLIC_API_URL + '/movie/' + context.params?.id +'?api_key='+process.env.NEXT_PUBLIC_API_KEY

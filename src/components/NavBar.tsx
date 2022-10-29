@@ -5,7 +5,7 @@ import { useRouter } from 'next/router';
 export const NavBar  = () => {
   const {user,logout} = useAuth();
   const router = useRouter();
-
+  
   return (
     <div className="py-4 boder-b-2">
       <header className="container mx-auto flex flex-row items-center justify-between border-2">
