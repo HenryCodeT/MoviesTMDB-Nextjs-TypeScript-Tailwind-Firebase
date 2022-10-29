@@ -1,8 +1,7 @@
 import { Layout } from 'components/layout';
 import { IMovie, IVideo } from 'components/MovieList';
 import { GetServerSideProps, NextPage } from 'next';
-import Image from 'next/image';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 
 interface TProps {
     movie: IMovie;
@@ -17,42 +16,42 @@ const MovieDetail: NextPage<TProps> = ({movie,results}) => {
   return (
     <Layout>
       <div className='max-w-sm w-full lg:max-w-full lg:flex-row p-20'>
-        <div className="text-2xl sm:text-3xl text-gray-600 font-bold text-center">{movie.title}</div>
+        <div className='text-2xl sm:text-3xl text-gray-600 font-bold text-center'>{movie.title}</div>
         <div className='max-w-sm w-full lg:max-w-full lg:flex'>
       
           <iframe
             style={{ width: '1000px' }}
             className='movie-trailer box-shadow col-1/2'
             src={'https://www.youtube.com/embed/'+(results.find(vi=>vi.official==true))?.key} 
-            frameBorder="0"
-            // allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+            frameBorder='0'
+            // allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
             // allowFullScreen
           />
-          <img className="w-full" src={`${URLIMAGE+ movie.backdrop_path}`} alt={`${movie.title} Poster`}/>
+          <img className='w-full' src={`${URLIMAGE+ movie.backdrop_path}`} alt={`${movie.title} Poster`}/>
         </div>
-        <div className="px-6 py-4">
+        <div className='px-6 py-4'>
           <div className='flex items-center m-2'>
-            <h6 className="text-2xl sm:text-3xl text-gray-600 font-bold">
+            <h6 className='text-gray-600 font-bold'>
             Overview:
             </h6>
-            <h6 className='text-2xl sm:text-3xl text-gray-600 ml-1'>
+            <h6 className='text-gray-600 ml-1'>
               {movie.overview}
             </h6>
           </div>
           <hr />
           <div className='flex items-center justify-between m-2'>
-            <h6 className="text-2xl sm:text-3xl text-gray-600 font-bold">
+            <h6 className='text-gray-600 font-bold'>
             Tagline:
             </h6>
-            <h6 className='text-2xl sm:text-3xl text-gray-600 ml-1'>
+            <h6 className='text-gray-600 ml-1'>
               {movie.tagline}
             </h6>
           </div>
           <div className='flex items-center justify-between m-2'>
-            <h6 className="text-2xl sm:text-3xl text-gray-600 font-bold">
+            <h6 className='text-gray-600 font-bold'>
             Original Language:
             </h6>
-            <h6 className='text-2xl sm:text-3xl text-gray-600 ml-1'>
+            <h6 className='text-gray-600 ml-1'>
               {movie.original_language}
             </h6>
           </div>

@@ -7,9 +7,9 @@ const DashBoard: NextPage<{response: string}> = ({response}) => {
 
   return(
     <Layout>
-      <main className="p-4">
-        <div className="container mx-auto flex flex-col items-center">
-          <h1 className="text-2xl text-center">
+      <main className='p-4'>
+        <div className='container mx-auto flex flex-col items-center'>
+          <h1 className='text-2xl text-center'>
             Dashboard {response} 
           </h1>
         </div>
