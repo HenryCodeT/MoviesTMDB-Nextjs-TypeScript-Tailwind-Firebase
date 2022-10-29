@@ -21,6 +21,8 @@ export interface IMovie {
     vote_count: number;
     videos : IVideo[];
     tagline: string;
+    revenue: string;
+    runtime: string;
 }   
 
 export interface IVideo {

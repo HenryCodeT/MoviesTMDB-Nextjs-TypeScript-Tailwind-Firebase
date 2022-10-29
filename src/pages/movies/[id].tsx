@@ -12,25 +12,25 @@ const MovieDetail: NextPage<TProps> = ({movie,results}) => {
   
   const URLIMAGE = 'https://image.tmdb.org/t/p/w500';
 
-
   return (
     <Layout>
-      <div className='max-w-sm w-full lg:max-w-full lg:flex-row p-20'>
+      <div className='p-10'>
         <div className='text-2xl sm:text-3xl text-gray-600 font-bold text-center'>{movie.title}</div>
-        <div className='max-w-sm w-full lg:max-w-full lg:flex'>
+        <div className='lg:max-w-full lg:flex lg:justify-between'>
       
           <iframe
             style={{ width: '1000px' }}
-            className='movie-trailer box-shadow col-1/2'
             src={'https://www.youtube.com/embed/'+(results.find(vi=>vi.official==true))?.key} 
             frameBorder='0'
             // allow='accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture'
             // allowFullScreen
           />
-          <img className='w-full' src={`${URLIMAGE+ movie.backdrop_path}`} alt={`${movie.title} Poster`}/>
+          <div className='max-w-screen-lg mx-auto' >
+            <img className='mx-auto' src={`${URLIMAGE+ movie.backdrop_path}`} alt={`${movie.title} Poster`}/>
+          </div>
         </div>
         <div className='px-6 py-4'>
-          <div className='flex items-center m-2'>
+          <div className='m-2'>
             <h6 className='text-gray-600 font-bold'>
             Overview:
             </h6>
@@ -53,6 +53,38 @@ const MovieDetail: NextPage<TProps> = ({movie,results}) => {
             </h6>
             <h6 className='text-gray-600 ml-1'>
               {movie.original_language}
+            </h6>
+          </div>
+          <div className='flex items-center justify-between m-2'>
+            <h6 className='text-gray-600 font-bold'>
+            Vote Average:
+            </h6>
+            <h6 className='text-gray-600 ml-1'>
+              {movie.vote_average}
+            </h6>
+          </div>
+          <div className='flex items-center justify-between m-2'>
+            <h6 className='text-gray-600 font-bold'>
+            Vote Count:
+            </h6>
+            <h6 className='text-gray-600 ml-1'>
+              {movie.vote_count}
+            </h6>
+          </div>
+          <div className='flex items-center justify-between m-2'>
+            <h6 className='text-gray-600 font-bold'>
+            Revenue:
+            </h6>
+            <h6 className='text-gray-600 ml-1'>
+              {movie.revenue}
+            </h6>
+          </div>
+          <div className='flex items-center justify-between m-2'>
+            <h6 className='text-gray-600 font-bold'>
+            Runtime:
+            </h6>
+            <h6 className='text-gray-600 ml-1'>
+              {movie.runtime}
             </h6>
           </div>
         </div>

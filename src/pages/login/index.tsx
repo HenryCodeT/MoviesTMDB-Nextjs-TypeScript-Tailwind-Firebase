@@ -8,6 +8,8 @@ import { useState } from 'react';
 const Login: NextPage = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const [error, setError] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   const { login } = useAuth();
   const router = useRouter();
@@ -26,7 +28,10 @@ const Login: NextPage = () => {
                   await login(email, password);
                   await router.push('/movies');
                 } catch (error) {
-                  console.log(error);
+                  if (error instanceof Error) {
+                    setErrorMessage(error?.message);
+                    setError(true);
+                  }
                 }
               }
             }
@@ -53,12 +58,13 @@ const Login: NextPage = () => {
                 onChange={(e) => setPassword(e.target.value)}
               />
             </div>
+            {error && <p className='text-red-500 text-center'>{errorMessage}</p>}
             <div className='mb-4'>
               <button
                 className='w-full py-2 px-6 text-gray-50 bg-gray-900'
                 type='submit'
               >
-                                Login
+              Login
               </button>
             </div>
           </form>

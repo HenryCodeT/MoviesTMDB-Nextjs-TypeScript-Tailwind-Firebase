@@ -2,12 +2,14 @@ import { useAuth } from 'context/AuthContext';
 import { Layout } from 'components/layout';
 import { NextPage } from 'next';
 import { useRouter } from 'next/router';
-import { useState } from 'react';
-
+import { useState } from 'react';   
 
 const Register:NextPage = () => {
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
+  const [error, setError] = useState<boolean>(false);
+  const [errorMessage, setErrorMessage] = useState<string>('');
+
 
   const {register} = useAuth();
   const router = useRouter();
@@ -25,7 +27,10 @@ const Register:NextPage = () => {
                 await register(email,password);
                 await router.push('/movies');
               } catch (error) {
-                console.log(error);
+                if (error instanceof Error) {
+                  setErrorMessage(error?.message);
+                  setError(true);
+                }
               }
             }}    
           >
@@ -51,12 +56,13 @@ const Register:NextPage = () => {
                 onChange={(e)=>setPassword(e.target.value)}
               />
             </div>
+            {error && <p className='text-red-500 text-center'>{errorMessage}</p>}
             <div className='mb-4'>
               <button
                 className='w-full py-2 px-6 text-gray-50 bg-gray-900'
                 type='submit'
               >
-                            Register
+              Register
               </button>
             </div>
           </form>
