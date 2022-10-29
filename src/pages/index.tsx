@@ -11,6 +11,8 @@ const Home: NextPage = () => {
       <main className='p-4'>
         <div className='container mx-auto flex flex-col'>
           <h1 className='text-center'>Welcome <span>{name}</span></h1>
+          <h1 className='text-center'>Henry Samuel Torres Condori</h1>
+          <h1 className='text-center'>120686@unsaac.edu.pe</h1>
         </div>
       </main>
     </Layout>
